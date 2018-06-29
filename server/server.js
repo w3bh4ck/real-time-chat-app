@@ -11,7 +11,7 @@ let app = express();
 app.use(express.static(publicPath));
 
 
-app.get('public')
+app.get('public');
 
 
 app.listen(port, ()=>{
