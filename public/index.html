@@ -14,13 +14,21 @@
     
     <script src="socket.io/socket.io.js"></script>
     <script>
-        let socket = io();
-        socket.on('connect', () => {
-            console.log('connected to a server');
-        });
-        socket.on('disconnect', () =>{
-            console.log('disconnected');   
-        })
+        // let socket = io();
+        // socket.on('connect', () => {
+        //     console.log('new user connected to ');
+
+        // socket.emit('createMessage', {
+        //     from: 'Lucky', 
+        //     text: 'You are my angel'
+        //     })
+
+
+        // });
+        // socket.on('disconnect', () =>{
+        //     console.log('disconnected');   
+        // })
     </script>
+    <script src="index.js"></script>
 </body>
 </html>

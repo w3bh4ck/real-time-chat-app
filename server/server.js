@@ -17,14 +17,24 @@ app.use(express.static(publicPath));
 app.get('public'); 
 
 io.on('connection', (socket) => {
-    console.log("connected");
+    console.log("new user connected");
+
+    socket.on('createMessage', (message) => {
+        console.log('recieved message', message);
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        })
+    });
 
     socket.on('disconnect', () =>{
-        console.log('disconnected');   
+        console.log('disconnected from server');   
     })
 
-})
+});
 
+   
 server.listen(port, ()=>{
     console.log(`app listening on port ${port}`);
 })
