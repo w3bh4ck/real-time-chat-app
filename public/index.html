@@ -17,17 +17,20 @@
 
 <script>
         socket.on('connect', () => {
-            console.log('new user connected');
 
-
-            socket.on('createMessage', (message) => {
+            socket.on('newMessage', (message) => {
             console.log('recieved message', message);
+            });
+         
+});
 
-        });
-    });
+    //    socket.on('createMessage', (message) => {
+    //         console.log('recieved message', message);
+    //     });
+
         socket.on('disconnect', () =>{
             console.log('disconnected');   
-        });
+});
 
 </script>
 

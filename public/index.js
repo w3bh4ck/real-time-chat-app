@@ -5,10 +5,6 @@ let socket = io();
 socket.on('connect', () => {
 console.log('connected to the server');
     
-socket.emit('createMessage', {
-        from: "grace",
-        text: "comfort is the name now"
-    });
 });
 
 //server disconnection action
@@ -18,7 +14,7 @@ socket.on('disconnect', () => {
     
 });
 
-socket.on('newEmail', (email) => {
-    console.log('New Email', email);
-});
+// socket.on('newEmail', (email) => {
+//     console.log('New Email', email);
+// });
 
