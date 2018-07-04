@@ -14,9 +14,9 @@ let io = socketIO(server);
 app.use(express.static(publicPath));
 
 
-app.get('/public'); 
+app.get('public'); 
 
-io.on('connection', (socket) => {
+io.on('connect', (socket) => {
     console.log("new user connected");
 
     socket.on('createMessage', (message) => {
