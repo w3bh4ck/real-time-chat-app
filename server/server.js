@@ -14,27 +14,28 @@ let io = socketIO(server);
 app.use(express.static(publicPath));
 
 
-app.get('public'); 
+app.get('public');
 
 io.on('connect', (socket) => {
     console.log("new user connected");
 
+
     socket.on('createMessage', (message) => {
         console.log('recieved message', message);
-        io.emit('newMessage', {
-            from: message.from,
-            text: message.text,
-            createdAt: new Date().getTime()
-        })
-    });
 
-    socket.on('disconnect', () =>{
-        console.log('disconnected from server');   
-    })
+        io.emit('createMessage', {
+            from: message.from,
+            text: message.text
+        });
+
+    });
+    socket.on('disconnect', () => {
+        console.log('disconnected from server')
+    });
 
 });
 
-   
-server.listen(port, ()=>{
-    console.log(`app listening on port ${port}`);
-})
+
+server.listen(port, () => {
+    console.log(`app listening on port ${port}`)
+});
