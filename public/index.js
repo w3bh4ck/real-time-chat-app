@@ -14,6 +14,31 @@ socket.on('disconnect', () => {
     
 });
 
+
+
+$('#message-form').on('submit', function(e){
+    e.preventDefault();
+    var message = $('[name=message]').val();    
+    // console.log(message);
+    
+    socket.emit('createMessage', {
+        from: 'user',
+        text: message
+    })
+   
+    e.target.reset();
+})
+
+socket.on('newMessage', (message) =>{
+    let from = message.from;
+    let text = message.text;
+
+    $('#messages').append(`<li> ${from} : ${text} </li>`);
+})
+
+
+
+
 // socket.on('newEmail', (email) => {
 //     console.log('New Email', email);
 // });
