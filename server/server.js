@@ -26,8 +26,7 @@ io.on('connect', (socket) => {
     socket.on('createMessage', (message) => {
         console.log(message);
 
-        io.emit('newMessage', generateMessage(message.from, message.text))
-        
+        io.emit('newMessage', generateMessage(message.from, message.text, message.createdAt));   
     })
  
     socket.on('disconnect', () => {
