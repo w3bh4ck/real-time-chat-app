@@ -6,7 +6,7 @@ let {generateMessage} = require('./utils/message');
 const { isRealString } = require('./utils/validation');
 const {Users} = require('./utils/users');
 
-const port = process.env.PORT | 4444;
+const port = process.env.PORT || 4444;
 
 let express = require('express');
 let app = express();
