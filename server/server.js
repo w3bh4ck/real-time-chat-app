@@ -28,8 +28,9 @@ io.on('connect', (socket) => {
       return callback('name and room name are required');
     }
     socket.join(params.room);
-    users.removeUser(socket.id);
     users.getUser(socket.id, params.name, params.room);
+    users.removeUser(socket.id);
+    
 
     io.to(params.name).emit('updateUserList', users.getUserList(params.room));
 
@@ -45,7 +46,12 @@ io.on('connect', (socket) => {
     })
  
     socket.on('disconnect', () => {
-        console.log('disconnected from server')
+       let user = users.removeUser(socket.id);
+
+       if (user){
+           io.to(user.room).emit('updateUserList', users.getUserList(user.room));
+           io.to(user.room).emit('newMessage', generateMessage('Admin', `${user.name} has left`));
+       }
     });
 
 });
