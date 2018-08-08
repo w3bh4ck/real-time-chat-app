@@ -53,7 +53,7 @@ $('#message-form').on('submit', function (e) {
 
 socket.on('updateUserList', (users) => {
     console.log('user list', users);
-})
+});
 
 socket.on('newMessage', (message) => {
     let template = $('#message-template').html();
